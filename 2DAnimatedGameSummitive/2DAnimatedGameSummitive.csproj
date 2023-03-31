@@ -102,6 +102,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="WinScreen.resx">
       <DependentUpon>WinScreen.cs</DependentUpon>
@@ -118,6 +119,30 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\gemPickUp.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\gameOver.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SadMusicForWhenYouLose.mp3" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Pokémon Diamond, Pearl &amp; Platinum - Champion Cynthia Battle Music %28HQ%29.mp3" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Kirby Super Star Revenge of Meta-Knight Ending Theme [Extended].mp3" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ScreamInTerror.mp3" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ScreamCoward.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Volo Battle Theme - Pokémon Legends_ Arceus [Piano Arrangement].mp3" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

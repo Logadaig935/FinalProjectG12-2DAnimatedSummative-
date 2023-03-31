@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Media;
 
 namespace _2DAnimatedGameSummitive
 {
@@ -32,6 +33,8 @@ namespace _2DAnimatedGameSummitive
         SolidBrush lightBlueBrush = new SolidBrush(Color.SkyBlue);
         SolidBrush purpleBrush = new SolidBrush(Color.DarkMagenta);
         SolidBrush redBrush = new SolidBrush(Color.Red);
+
+        SoundPlayer gemPickUp = new SoundPlayer(Properties.Resources.gemPickUp);
 
         Random randGen = new Random();
         Random randGen2 = new Random();
@@ -91,6 +94,7 @@ namespace _2DAnimatedGameSummitive
             if (gemRec.Collision(robber))
             {
                 score++;
+                gemPickUp.Play();
                 foreach (Safety s in safetyList)
                 {
                     robber.x = s.safetyX + 30;

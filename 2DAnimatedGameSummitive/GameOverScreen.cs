@@ -7,14 +7,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Media;
 
 namespace _2DAnimatedGameSummitive
 {
     public partial class GameOverScreen : UserControl
     {
+        SoundPlayer gameOver = new SoundPlayer(Properties.Resources.gameOver);
         public GameOverScreen()
         {
             InitializeComponent();
+            gameOver.Play();
         }
 
         private void retryButton_Click(object sender, EventArgs e)

@@ -18,5 +18,22 @@ namespace _2DAnimatedGameSummitive
             safetyWidth = _safetyWidth;
             safetyHeight = _safetyHeight;
         }
+
+        public bool Collision(Safety s)
+        {
+            Rectangle safetyRec = new Rectangle(s.safetyX, s.safetyY, s.safetyWidth, s.safetyHeight);
+            Rectangle safetyRec2 = new Rectangle(s.safetyX, s.safetyY, s.safetyWidth, s.safetyHeight);
+            if (safetyRec.IntersectsWith(safetyRec2))
+            {
+                s.safetyX++;
+                return true;
+            }
+            else if (safetyRec.IntersectsWith(safetyRec2))
+            {
+                s.safetyX--;
+                return true;
+            }
+            return false;
+        }
     }
 }

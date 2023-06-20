@@ -31,6 +31,7 @@
             this.againButton = new System.Windows.Forms.Button();
             this.exitButton = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.timeLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // againButton
@@ -61,18 +62,28 @@
             // 
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("MV Boli", 22F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(249, 59);
+            this.label1.Location = new System.Drawing.Point(249, 27);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(656, 129);
             this.label1.TabIndex = 1;
             this.label1.Text = "You Escaped with your Treasures!";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // timeLabel
+            // 
+            this.timeLabel.Font = new System.Drawing.Font("MV Boli", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.timeLabel.Location = new System.Drawing.Point(397, 163);
+            this.timeLabel.Name = "timeLabel";
+            this.timeLabel.Size = new System.Drawing.Size(352, 37);
+            this.timeLabel.TabIndex = 2;
+            this.timeLabel.Text = "Your Time: ---";
+            // 
             // WinScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Lime;
+            this.Controls.Add(this.timeLabel);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.exitButton);
             this.Controls.Add(this.againButton);
@@ -87,5 +98,6 @@
         private System.Windows.Forms.Button againButton;
         private System.Windows.Forms.Button exitButton;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label timeLabel;
     }
 }

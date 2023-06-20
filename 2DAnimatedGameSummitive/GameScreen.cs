@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Media;
+using System.Xml;
+using System.Diagnostics;
 
 namespace _2DAnimatedGameSummitive
 {
@@ -15,6 +17,7 @@ namespace _2DAnimatedGameSummitive
     {
         Gem gemRec = new Gem(10, 10, 10, 10);
         List<Laser> laserList = new List<Laser>();
+        List<Enemy> enemyList = new List<Enemy>();
         List<Safety> safetyList = new List<Safety>();
 
         Player robber;
@@ -23,7 +26,7 @@ namespace _2DAnimatedGameSummitive
         public static int difficulty;
         public static int difficultySafety;
         public static int score = 0;
-        public static int lives = 3;
+        public static int lives;
 
         public static bool point = false;
 
@@ -35,13 +38,29 @@ namespace _2DAnimatedGameSummitive
         SolidBrush redBrush = new SolidBrush(Color.Red);
 
         SoundPlayer gemPickUp = new SoundPlayer(Properties.Resources.gemPickUp);
+        SoundPlayer laserHit = new SoundPlayer(Properties.Resources.LaserHit);
+        SoundPlayer enemyHit = new SoundPlayer(Properties.Resources.enemyHit);
 
         Random randGen = new Random();
         Random randGen2 = new Random();
+
+
+        public Stopwatch watchHS = new Stopwatch();
+
         public GameScreen()
         {
+            watchHS.Start();
             InitializeComponent();
             InitializeGame();
+            HighScore();
+        }
+
+        public void HighScore() // keeps track of how fast the player beat the level
+        {
+            if (gameEngine.Enabled == false)
+            {
+                Form1.hS1 = (int)watchHS.ElapsedMilliseconds;
+            }
         }
 
         public void InitializeGame()
@@ -52,23 +71,25 @@ namespace _2DAnimatedGameSummitive
 
             livesLabel.Text = $"Lives: {lives}";
 
-            for (int i = 0; i < difficulty; i++)
+            for (int i = 0; i < difficulty; i++) // spawns enemies
             {
                 NewLaser();
+                NewEnemy();
             }
-            for (int i = 0; i < difficultySafety; i++)
+            for (int i = 0; i < difficultySafety; i++) // spawns safe areas
             {
                 NewSafetyBox();
             }
-            foreach (Safety s in safetyList)
+            foreach (Safety s in safetyList) // spawns the player in a safe area
             {
                 robber.x = s.safetyX + 30;
                 robber.y = s.safetyY + 30;
             }
         }
 
-        private void gameEngine_Tick(object sender, EventArgs e)
+        private void gameEngine_Tick(object sender, EventArgs e) 
         {
+            // lets the player move 
             if (upArrowDown && robber.y > 0)
             {
                 robber.Move("up");
@@ -86,16 +107,19 @@ namespace _2DAnimatedGameSummitive
                 robber.Move("right");
             }
 
-            foreach (Laser l in laserList)
+            foreach (Laser l in laserList) // lets the lasers move
             {
                 l.Move(this.Width);
             }
-
+            foreach (Enemy en in enemyList) // lets the enemies track the robber
+            {
+                en.Move(robber);
+            }
             if (gemRec.Collision(robber))
             {
-                score++;
+                score++; // adds a point for the player
                 gemPickUp.Play();
-                foreach (Safety s in safetyList)
+                foreach (Safety s in safetyList) // places the player back at the starting point after the gem is grabbed
                 {
                     robber.x = s.safetyX + 30;
                     robber.y = s.safetyY + 30;
@@ -104,74 +128,98 @@ namespace _2DAnimatedGameSummitive
             }
             foreach (Laser l in laserList)
             {
-                if (l.Collision(robber))
+                if (l.Collision(robber)) // checks if the player has been hit by the lasers
                 {
                     lives--;
+                    laserHit.Play();
                     livesLabel.Text = $"Lives: {lives}";
                 }
             }
 
+            foreach (Enemy en in enemyList) // checks if the trackers have caught up to the player
+            {
+                if (en.Collision(robber))
+                {
+                    lives--;
+                    enemyHit.Play();
+                    livesLabel.Text = $"Lives: {lives}";
+                }
+            }
             foreach (Laser l in laserList)
             {
                 bool noCollision = true;
                 foreach (Safety s in safetyList)
                 {
-                    if (l.Collision(s))
+                    if (l.Collision(s)) // checks for laser collision with safety box and changes height accordingly
                     {
                         l.laserHeight = s.safetyY - 1;
                         noCollision = false;
                         break;
                     }
-                    if (noCollision)
+                    if (noCollision) // if there is no collision height will stay the same
                     {
-                        l.laserHeight = 300;
+                        l.laserHeight = 800;
                     }
                 }
             }
-            if (lives <= 0)
+            if (lives <= 0) // ends the program if lives hit zero
             {
                 score = 0;
                 gameEngine.Stop();
+                watchHS.Stop();
                 ChangeScreen(this, new GameOverScreen());
             }
-            if (score >= 5)
+            if (score >= 5) // send the player to the next level if they collect the gem 5 times
             {
-                score = 0;
                 gameEngine.Stop();
-                ChangeScreen(this, new WinScreen());
+                watchHS.Stop();
+                HighScore();
+                lives = 5;
+                Form1.ChangeScreen(this, new Level2());
             }
             Refresh();
         }
 
-        public void NewLaser()
+        public void NewLaser() //spawns the lasers at the start of the program
         {
-            int x = randGen.Next(10, this.Width - 10);
-            Laser newLaser = new Laser(x);
+            int laserX = randGen.Next(10, this.Width - 10);
+            Laser newLaser = new Laser(laserX);
             laserList.Add(newLaser);
         }
-        public void NewSafetyBox()
+        public void NewEnemy() //spawns the trackers at the start of the program
         {
-            int X = randGen2.Next(10, this.Width - 80);
-            int Y = randGen2.Next(10, this.Height - 80);
-            Safety newSafetyBox = new Safety(X, Y, 80, 80);
+            int enemyX = randGen.Next(100, this.Width - 10);
+            int enemyY = randGen.Next(10, this.Height - 10);
+            Enemy newEnemy = new Enemy(enemyX, enemyY);
+            enemyList.Add(newEnemy);
+        }
+        public void NewSafetyBox() //spawns the safety boxes at the start of the program
+        {
+            int safetyX = randGen2.Next(10, this.Width - 100);
+            int safetyY = randGen2.Next(10, this.Height - 100);
+            Safety newSafetyBox = new Safety(safetyX, safetyY, 80, 80);
             safetyList.Add(newSafetyBox);
         }
-        private void GameScreen_Paint(object sender, PaintEventArgs e)
+        private void GameScreen_Paint(object sender, PaintEventArgs e) // paints the player, enemies, safetyboxes, and gem on the screen
         {
 
             foreach (Safety s in safetyList)
             {
                 e.Graphics.FillRectangle(blueBrush, s.safetyX, s.safetyY, s.safetyWidth, s.safetyHeight);
             }
-            if (difficulty == 2)
+            foreach (Enemy en in enemyList)
+            {
+                e.Graphics.FillRectangle(redBrush, en.enemyX, en.enemyY, en.enemyWidth, en.enemyHeight);
+            }
+            if (difficulty == 1)
             {
                 e.Graphics.FillEllipse(limeBrush, 600, 200, 50, 50);
             }
-            if (difficulty == 4)
+            if (difficulty == 2)
             {
                 e.Graphics.FillEllipse(lightBlueBrush, 600, 200, 50, 50);
             }
-            if (difficulty == 8)
+            if (difficulty == 4)
             {
                 e.Graphics.FillEllipse(purpleBrush, 600, 200, 50, 50);
             }
@@ -201,8 +249,8 @@ namespace _2DAnimatedGameSummitive
                     break;
             }
         }
-
-        private void GameScreen_KeyUp(object sender, KeyEventArgs e)
+        // ^ lets the player move 
+        private void GameScreen_KeyUp(object sender, KeyEventArgs e)            // lets the player move 
         {
             switch (e.KeyCode)
             {

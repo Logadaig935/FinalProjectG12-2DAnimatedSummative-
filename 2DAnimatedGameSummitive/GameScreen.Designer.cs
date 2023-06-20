@@ -44,6 +44,7 @@
             // 
             this.scoreOutputLabel.BackColor = System.Drawing.Color.Transparent;
             this.scoreOutputLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.scoreOutputLabel.ForeColor = System.Drawing.Color.LawnGreen;
             this.scoreOutputLabel.Location = new System.Drawing.Point(2, 2);
             this.scoreOutputLabel.Name = "scoreOutputLabel";
             this.scoreOutputLabel.Size = new System.Drawing.Size(150, 35);
@@ -54,9 +55,10 @@
             // 
             this.livesLabel.BackColor = System.Drawing.Color.Transparent;
             this.livesLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.livesLabel.Location = new System.Drawing.Point(997, 2);
+            this.livesLabel.ForeColor = System.Drawing.Color.LawnGreen;
+            this.livesLabel.Location = new System.Drawing.Point(999, 2);
             this.livesLabel.Name = "livesLabel";
-            this.livesLabel.Size = new System.Drawing.Size(150, 35);
+            this.livesLabel.Size = new System.Drawing.Size(187, 35);
             this.livesLabel.TabIndex = 1;
             this.livesLabel.Text = "Lives :";
             // 
@@ -64,12 +66,12 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.Gray;
+            this.BackColor = System.Drawing.Color.Black;
             this.Controls.Add(this.livesLabel);
             this.Controls.Add(this.scoreOutputLabel);
             this.DoubleBuffered = true;
             this.Name = "GameScreen";
-            this.Size = new System.Drawing.Size(1150, 450);
+            this.Size = new System.Drawing.Size(1200, 600);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.GameScreen_Paint);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.GameScreen_KeyUp);
             this.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.GameScreen_PreviewKeyDown);

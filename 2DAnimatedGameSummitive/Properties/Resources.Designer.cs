@@ -61,6 +61,25 @@ namespace _2DAnimatedGameSummitive.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap bromze_Medal {
+            get {
+                object obj = ResourceManager.GetObject("bromze Medal", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream enemyHit {
+            get {
+                return ResourceManager.GetStream("enemyHit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
         /// </summary>
         internal static System.IO.UnmanagedMemoryStream gameOver {
@@ -75,6 +94,74 @@ namespace _2DAnimatedGameSummitive.Properties {
         internal static System.IO.UnmanagedMemoryStream gemPickUp {
             get {
                 return ResourceManager.GetStream("gemPickUp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Gold_Medal {
+            get {
+                object obj = ResourceManager.GetObject("Gold Medal", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Gold_Medal1 {
+            get {
+                object obj = ResourceManager.GetObject("Gold Medal1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&gt; 
+        ///.
+        /// </summary>
+        internal static string HighScoreTime {
+            get {
+                return ResourceManager.GetString("HighScoreTime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream LaserHit {
+            get {
+                return ResourceManager.GetStream("LaserHit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Red_Medal {
+            get {
+                object obj = ResourceManager.GetObject("Red Medal", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap SilverMedal {
+            get {
+                object obj = ResourceManager.GetObject("SilverMedal", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream winSound {
+            get {
+                return ResourceManager.GetStream("winSound", resourceCulture);
             }
         }
     }

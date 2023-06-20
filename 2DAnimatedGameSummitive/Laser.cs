@@ -9,9 +9,9 @@ namespace _2DAnimatedGameSummitive
 {
     internal class Laser
     {
-        public int laserX, laserY, xSpeed = 8;
+        public int laserX, laserY, xSpeed = 4;
         public int laserWidth = 10;
-        public int laserHeight = 300;
+        public int laserHeight = 800;
 
         public Laser(int _laserX)
         {
@@ -38,7 +38,6 @@ namespace _2DAnimatedGameSummitive
             {
                 return true;
             }
-
             if (laserX - s.safetyX < laserWidth + s.safetyWidth && laserX - s.safetyX > 0)
             {
                 return true;
@@ -46,20 +45,7 @@ namespace _2DAnimatedGameSummitive
             return false;
         }
 
-        //public void Collision(Safety s)
-        //{
-        //    Rectangle laserRec = new Rectangle(laserX, laserY, laserWidth, laserHeight);
-        //    Rectangle safetyRec = new Rectangle(s.safetyX, s.safetyY, s.safetyWidth, s.safetyHeight);
 
-        //    if (laserRec.IntersectsWith(safetyRec))
-        //    {
-        //        laserHeight = s.safetyY - 1;
-        //    }
-        //    if (!laserRec.IntersectsWith(safetyRec))
-        //    {
-        //        laserHeight = 300;
-        //    }
-        //}
 
 
         public bool Collision(Player p)

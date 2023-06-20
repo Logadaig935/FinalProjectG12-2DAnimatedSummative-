@@ -7,14 +7,41 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml;
 
 namespace _2DAnimatedGameSummitive
 {
     public partial class Form1 : Form
     {
+        public static int hS1;
+        public static int hS2;
+        public static int highScore;
+        public static int highScoreEasy;
+        public static int highScoreMedium;
+        public static int highScoreHard;
+        // keeps track of each fastest time while keeping track of the current players time
+
         public Form1()
         {
             InitializeComponent();
+
+            XmlReader reader = XmlReader.Create("Resources/highScoreTime.xml");
+
+            while (reader.Read())
+            {
+                if (reader.NodeType == XmlNodeType.Text)
+                {
+                    Form1.highScoreHard = Convert.ToInt32(reader.ReadString());
+
+                    reader.ReadToNextSibling("silver");
+                    Form1.highScoreMedium = Convert.ToInt32(reader.ReadString());
+
+                    reader.ReadToNextSibling("bronze");
+                    Form1.highScoreEasy = Convert.ToInt32(reader.ReadString());
+                }
+            }
+
+            reader.Close();
 
             //open menu screen when the program starts
             ChangeScreen(this, new MenuScreen());
@@ -45,6 +72,25 @@ namespace _2DAnimatedGameSummitive
                 (f.ClientSize.Height - next.Height) / 2);
             f.Controls.Add(next);
             next.Focus();
+        }
+
+        private void Form1_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            XmlWriter writer = XmlWriter.Create("Resources/HighScoreTime.xml", null);
+
+            writer.WriteStartElement("HighScores");
+
+            writer.WriteStartElement("score");
+
+            writer.WriteElementString("gold", Form1.highScoreHard.ToString());
+            writer.WriteElementString("silver", Form1.highScoreMedium.ToString());
+            writer.WriteElementString("bronze", Form1.highScoreEasy.ToString());
+
+            writer.WriteEndElement();
+
+            writer.WriteEndElement();
+
+            writer.Close();
         }
     }
 }

@@ -118,10 +118,37 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="gameOver" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\gameOver.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="Red Medal" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Red Medal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Gold Medal1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Gold Medal1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="gemPickUp" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\gemPickUp.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="bromze Medal" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bromze Medal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Gold Medal" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Gold Medal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="gameOver" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\gameOver.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="SilverMedal" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\SilverMedal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="HighScoreTime" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\HighScoreTime.xml;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="enemyHit" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\enemyHit.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="LaserHit" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\LaserHit.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="winSound" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\winSound.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
 </root>
